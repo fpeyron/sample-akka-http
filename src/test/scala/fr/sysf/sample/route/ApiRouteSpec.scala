@@ -11,12 +11,14 @@ import fr.sysf.sample.actor.WorkerActor
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{Matchers, WordSpec}
 
-class ApiRoutesSpec extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
+class ApiRouteSpec extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
 
   val testKit: ActorTestKit                            = ActorTestKit()
   val workerActorProbe: TestProbe[WorkerActor.Command] = testKit.createTestProbe[WorkerActor.Command]()
 
   val apiRoute: Route = ApiRoute()(testKit.system.toUntyped, workerActorProbe.ref)
+
+  override def afterAll(): Unit = testKit.shutdownTestKit()
 
   "getList (GET /api/list)" should {
 
@@ -57,10 +59,12 @@ class ApiRoutesSpec extends WordSpec with Matchers with ScalaFutures with Scalat
 
     "get with some parameters" in {
 
-      HttpRequest(uri = "/api/list?int1=3&int2=5") ~> apiRoute
+      HttpRequest(uri = "/api/list?limit=15&int1=3&int2=5") ~> apiRoute
 
       val cmd = workerActorProbe.expectMessageType[WorkerActor.GetList]
       assertResult(Map(3 -> "none", 5 -> "none"))(cmd.dictionary)
+
+      cmd.replyTo ! WorkerActor.GetListReply(Source("1,2,none,4,none,none,7,8,none,10,11,none,13,14,nonenone,17,18".split(",").toList))
     }
 
   }
