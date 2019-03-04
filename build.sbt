@@ -32,7 +32,8 @@ parallelExecution in Test := true
 // ----------------
 // ScalaStyle
 // ----------------
-scalastyleFailOnError := true
+scalastyleFailOnError    := true
+coverageExcludedPackages := ".*Main.*;.*Config.*;.*BuildInfo*;.*SwaggerRoute.*;.*SwaggerUiRoute.*"
 
 // ----------------
 // test it (gatling)
