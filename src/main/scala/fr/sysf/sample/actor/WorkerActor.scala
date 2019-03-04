@@ -7,7 +7,8 @@ import akka.stream.scaladsl.Source
 import fr.sysf.sample.actor.WorkerActor._
 
 /**
-  *
+  * Companion object to implement Worker Actor
+  * I/O description
   */
 object WorkerActor {
 
@@ -41,7 +42,7 @@ object WorkerActor {
 }
 
 /**
-  *
+  * Worker Actor
   */
 class WorkerActor(ctx: ActorContext[Command]) extends AbstractBehavior[Command] {
 

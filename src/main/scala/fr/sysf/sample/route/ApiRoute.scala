@@ -17,7 +17,7 @@ import scala.concurrent.duration._
 import scala.util.Try
 
 /**
-  *
+  * Companion object to implement route Api server
   */
 object ApiRoute {
 
@@ -25,7 +25,7 @@ object ApiRoute {
 }
 
 /**
-  *
+  * Route Api server
   */
 @Api(value = "/api")
 @Path("/api")
@@ -104,7 +104,7 @@ class ApiRoute()(implicit system: ActorSystem, workerActor: ActorRef[WorkerActor
   @ApiResponses(
     Array(
       new ApiResponse(code = 200, message = "Return top", response = classOf[StatLine]),
-      new ApiResponse(code = 204, message = "Not found", response  = classOf[Unit]),
+      new ApiResponse(code = 204, message = "Not found", response  = classOf[Unit])
     )
   )
   def getTopHit: Route = (path("statistics" / "top") & get) {

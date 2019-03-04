@@ -3,7 +3,7 @@ package fr.sysf.sample.route
 import akka.http.scaladsl.server.{Directives, PathMatcher, Route}
 
 /**
-  *
+  * Companion object to implement route Swagger UI server
   */
 object SwaggerUiRoute extends Directives {
 

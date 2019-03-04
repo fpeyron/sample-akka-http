@@ -59,11 +59,11 @@ Application is running by default on the port `8080`. It should change in resour
 #### Build as Fat Jar and run
 ```bash
 sbt assembly
-java -Dapi.http.port=8083 -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar
+java -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar
 ```
 Application is running on the port `8080` by default. It should change with Jvm parameter :
 ```bash
-java -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar
+java -Dapi.http.port=8083 -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar
 ```
  
 

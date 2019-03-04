@@ -12,7 +12,7 @@ import fr.sysf.sample.actor.WorkerActor
 import fr.sysf.sample.route._
 
 /**
-  *
+  * Main class executable
   */
 object Main extends App with LazyLogging {
 

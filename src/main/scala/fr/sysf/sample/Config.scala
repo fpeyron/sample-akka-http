@@ -5,11 +5,9 @@ import java.time.Duration
 import com.typesafe.config.ConfigFactory
 
 /**
-  *
+  * Configuration object to get parameters
   */
 object Config {
-
-  case class UserEntry(username: String, password: String, countryCode: Option[String] = None, zoneinfo: Option[String] = None, roles: Seq[String] = Seq.empty)
 
   object api {
     lazy val port: Int         = ConfigFactory.load().getInt("api.http.port")

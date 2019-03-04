@@ -8,7 +8,7 @@ import com.github.swagger.akka.{CustomMediaTypes, SwaggerGenerator, SwaggerHttpS
 import io.swagger.models.{ExternalDocs, Scheme}
 
 /**
-  *
+  * Companion object to implement route Swagger description server
   */
 object SwaggerRoute extends Directives with SwaggerGenerator {
 
