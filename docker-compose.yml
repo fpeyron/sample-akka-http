@@ -1,0 +1,34 @@
+version: '3'
+services:
+
+  c1:
+    container_name: sample-akka-http_1
+    image: sample-akka-http:latest
+    ports:
+      - '8081:8080'
+      - '2551:2550'
+    environment:
+      AKKA_CANONICAL_PORT: 2551
+      AKKA_CANONICAL_HOST: c1
+
+  c2:
+    container_name: sample-akka-http_2
+    image: sample-akka-http:latest
+    ports:
+      - '8082:8080'
+      - '2552:2550'
+    environment:
+      AKKA_CANONICAL_PORT: 2552
+      AKKA_CANONICAL_HOST: c2
+      AKKA_SEED: akka://system@c1:2551
+
+  c3:
+    container_name: sample-akka-http_3
+    image: sample-akka-http:latest
+    ports:
+      - '8083:8080'
+      - '2553:2550'
+    environment:
+      AKKA_CANONICAL_PORT: 2553
+      AKKA_CANONICAL_HOST: c3
+      AKKA_SEED: akka://system@c1:2551

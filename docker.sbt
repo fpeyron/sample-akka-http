@@ -13,5 +13,8 @@ maintainer in Docker  := "technical support <florent.peyron@gmail.com>"
 dockerBaseImage       := "openjdk:11.0.1-jre-slim"
 daemonUser in Docker  := "daemon"
 dockerExposedPorts    := Seq(8080)
-dockerCommands        += Cmd("ENV", "JAVA_OPTS '-Xms256m -Xmx256m -XX:MaxGCPauseMillis=200 -XX:MaxMetaspaceSize=128m -Dfile.encoding=UTF-8'")
-dockerUpdateLatest    := true
+dockerCommands += Cmd(
+  "ENV",
+  "JAVA_OPTS '-Xms256m -Xmx256m -XX:MaxGCPauseMillis=200 -XX:MaxMetaspaceSize=128m -Dfile.encoding=UTF-8 -Dconfig.resource=application-cluster.conf'"
+)
+dockerUpdateLatest := true

@@ -65,7 +65,7 @@ Application is running on the port `8080` by default. It should change with Jvm 
 ```bash
 java -Dapi.http.port=8083 -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar
 ```
- 
+ //-Dconfig.resource=application-constructr.conf
 
 
 #### Testing and coverage
@@ -112,6 +112,31 @@ Run instance of docker image locally :
 > **NOTE** for run publishing and tags, `Docker` environment should be started locally and configured for publishing.
 
 
+#### Deployment as cluster
+__Example__ with command line :
+
+console 1 :
+```bash
+java -Dconfig.resource=application-cluster.conf -Dapi.http.port=8081 -Dakka.remote.artery.canonical.port=2551 \
+ -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar
+```
+console2 :
+```bash
+java -Dconfig.resource=application-cluster.conf -Dapi.http.port=8082 -Dakka.remote.artery.canonical.port=2552 \
+-Dakka.cluster.seed-nodes.0="akka://system@localhost:2551" \
+ -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar 
+```
+console3 :
+```bash
+java -Dconfig.resource=application-cluster.conf -Dapi.http.port=8083 -Dakka.remote.artery.canonical.port=2553 \
+-Dakka.cluster.seed-nodes.0="akka://system@localhost:2551" \
+ -jar ./target/scala-2.12/sample-akka-http-assembly-1.0-SNAPSHOT.jar  
+```
+
+__Example__ with docker :
+```bash
+docker-compose -f docker-compose.yml up
+```
 
 #### Test Integration (IT) ####
 

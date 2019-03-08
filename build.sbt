@@ -10,7 +10,8 @@ libraryDependencies ++= Dependencies.logging ++
   Dependencies.akka ++
   Dependencies.akkaHttp ++
   Dependencies.swagger ++
-  Dependencies.testIt
+  Dependencies.testIt ++
+  Dependencies.akkaCluster
 
 // ----------------
 // Run

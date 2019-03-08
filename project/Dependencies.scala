@@ -18,6 +18,12 @@ object Dependencies {
     "com.typesafe.akka" %% "akka-stream-testkit"      % akkaVersion % Test
   )
 
+  // -- akka cluster
+  lazy val akkaCluster: Seq[ModuleID] = Seq(
+    "com.typesafe.akka" %% "akka-discovery"     % akkaVersion,
+    "com.typesafe.akka" %% "akka-cluster-typed" % akkaVersion
+  )
+
   // --- akka http
   lazy val akkaHttp: Seq[sbt.ModuleID] = akka ++ Seq(
     "com.typesafe.akka" %% "akka-http"         % akkaHttpVersion,
