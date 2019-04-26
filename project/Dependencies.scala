@@ -2,8 +2,8 @@ import sbt._
 
 object Dependencies {
 
-  private lazy val akkaVersion        = "2.5.21"
-  private lazy val akkaHttpVersion    = "10.1.6"
+  private lazy val akkaVersion        = "2.5.22"
+  private lazy val akkaHttpVersion    = "10.1.8"
   private lazy val akkaSwaggerVersion = "1.0.0"
   private lazy val gatlingVersion     = "3.0.2"
 
@@ -20,8 +20,12 @@ object Dependencies {
 
   // -- akka cluster
   lazy val akkaCluster: Seq[ModuleID] = Seq(
-    "com.typesafe.akka" %% "akka-discovery"     % akkaVersion,
-    "com.typesafe.akka" %% "akka-cluster-typed" % akkaVersion
+    "com.typesafe.akka"             %% "akka-discovery"                    % akkaVersion,
+    "com.typesafe.akka"             %% "akka-cluster-typed"                % akkaVersion,
+    "com.typesafe.akka"             %% "akka-discovery"                    % akkaVersion,
+    "com.lightbend.akka.management" %% "akka-management"                   % "1.0.0",
+    "com.lightbend.akka.discovery"  %% "akka-discovery-aws-api-async"      % "1.0.0",
+    "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % "1.0.0"
   )
 
   // --- akka http

@@ -7,7 +7,7 @@ import com.typesafe.sbt.packager.docker.Cmd
 enablePlugins(DockerPlugin, JavaAppPackaging)
 
 mappings in Universal ++= contentOf(baseDirectory.value / "src" / "main" / "docker")
-packageName in Docker := s"${name.value}"
+packageName in Docker := s"972342763807.dkr.ecr.eu-west-1.amazonaws.com/${name.value}"
 version in Docker     := version.value
 maintainer in Docker  := "technical support <florent.peyron@gmail.com>"
 dockerBaseImage       := "openjdk:11.0.1-jre-slim"
@@ -15,6 +15,6 @@ daemonUser in Docker  := "daemon"
 dockerExposedPorts    := Seq(8080)
 dockerCommands += Cmd(
   "ENV",
-  "JAVA_OPTS '-Xms256m -Xmx256m -XX:MaxGCPauseMillis=200 -XX:MaxMetaspaceSize=128m -Dfile.encoding=UTF-8 -Dconfig.resource=application-cluster.conf'"
+  "JAVA_OPTS '-Xms256m -Xmx256m -XX:MaxGCPauseMillis=200 -XX:MaxMetaspaceSize=128m -Dfile.encoding=UTF-8 -Dconfig.resource=application-aws-ecs.conf'"
 )
 dockerUpdateLatest := true
