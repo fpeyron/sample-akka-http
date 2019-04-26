@@ -2,8 +2,8 @@ import sbt._
 
 object Dependencies {
 
-  private lazy val akkaVersion        = "2.5.21"
-  private lazy val akkaHttpVersion    = "10.1.6"
+  private lazy val akkaVersion        = "2.5.22"
+  private lazy val akkaHttpVersion    = "10.1.8"
   private lazy val akkaSwaggerVersion = "1.0.0"
   private lazy val gatlingVersion     = "3.0.2"
 
